@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <title>Debugging Contest</title>
+
+    <style>
+        /* Resetting default margin and padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main container styling */
+ 
+        .container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #DCF2F1; /* White background with opacity */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease; 
+        }
+
+        /* Title styling */
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            padding-top:30px;
+            padding-bottom: 30px;
+            background-color:#FFFDCB;
+            width: 100%;
+            animation: fadeIn 1s ease; /* Fade in animation */
+        }
+
+        /* Question styling */
+        h2 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            animation: fadeInLeft 1s ease; /* Fade in animation */
+        }
+
+        /* Paragraph styling */
+        .question p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        /* Code block styling */
+        .code {
+            background-color: #f9f9f9;
+            overflow-x: auto;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            width: 78%;
+            border:2px solid #000;
+        }
+
+        .code pre {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .timer-button {
+            font-size: 26px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .timer-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Textarea styling */
+        .textArea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            width: 82.5%;
+            resize: none; /* Disable textarea resizing */
+        }
+
+        /* Textarea focus styling */
+        .textArea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .question-status {
+            margin-top: 20px;
+            position: fixed;
+            top: 35%;
+            right: 0px;
+            transform: translateY(-50%);
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 15px;
+            background-color: aliceblue;
+        }
+
+        .question-status-item {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 25px;
+        }
+
+        .answered {
+            background-color: green;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DEBUGGING CONTEST QUESTIONS</h1><br>
+        <h3 style="margin-left: 40%; margin-top:-10px; text-decoration: underline;">Advance Level</h3>
+        <h2>1.	Correct error to customise the class creation</h2></br>
+        
+        <div class="question">
+            <p>DEBUG the following Python code:</p>
+            <div class="code">
+                <pre>class MyMeta(type):
+                    def __new__(cls, name, dct):
+                        dct['custom_attributes'] = 100
+                        return super().__new__(cls, name, dct)
+                
+                class MyClass(metaclass=MyMeta):
+                    continue
+                
+                print(MyClass.custom_attributes)
+                </pre>
+                
+            </div>
+        </div>
+    
+        
+    </div>
+
+     <div class="container">
+        <h2>2.	Debug to create decorate factory that returns decorate functions.</h2>
+        
+        <div class="question">
+            <p>DEBUG the following Python code:</p>
+            <div class="code">
+                <pre>def repeat(num_times):
+                    def decorator(func):
+                        def wrapper(*args, **kwargs):
+                            for _ in range(num_times):
+                                result = func(*args, **kwargs)
+                                value=wrap(args,*kwargs)
+                            return wrapper
+                        return result
+                    return decorator
+                
+                @repeat(num_times=3)
+                def greet(name):
+                    print(f"Hello, {name}!")
+                
+                greet("Alice")
+                 
+                </pre>
+                
+            </div>
+        </div>
+       
+    </div>
+     
+     <div class="container">
+            <h2>3.	Debug the code to create inventory management system.</h2>
+    
+    <div class="question">
+        <p>DEBUG the following Python code:</p>
+        <div class="code">
+            <pre>class InventoryItem:
+                def __init__(self, name, quantity, price):
+                    self.name = name
+                    self.quantity = quantity
+                    self.price = price
+            
+            class InventoryManager:
+                def __init__(self.name):
+                    self.inventory = ()
+            
+                def add_item(self, item):
+                    self.inventory.extends(item)
+            
+                def remove_item(self, name):
+                    for item in inventory:
+                        if item.name == name:
+                            self.inventory.pop(item)
+                            
+            
+                def update_quantity(self, name, quantity):
+                    for item in inventory:
+                        if item.name == name:
+                            item.quantity = quantity
+                            
+            
+                def generate_report(self):
+                    total_value = 0
+                    for item in self.inventory:
+                        total_value += item.quantity * item.price
+                    return total_value
+            item1 = InventoryItem("Laptop", 10, 500)
+            item2 = InventoryItem("Phone", 20, 300)
+            manager = InventoryManager()
+            manager.add_item(item)
+            print(manager.generate_report())
+            
+            
+            </pre>
+            
+        </div>
+    </div>
+   
+   
+</div>
+
+<div class="container">
+        <h2></h2>4.	Debug the code to make a chat application
+        class User:</h2>
+
+<div class="question">
+    <p>DEBUG the following Python code:</p>
+    <div class="code">
+        <pre>    def __init__(self, username,messages):
+            self.username = username
+            self.messages = []
+    
+        def send_message(self, message):
+            messages.append(message)
+    user1 = User("Alice")
+    user2 = User("Bob")
+    user1.sendmessage("Hello, Bob!", user2)
+    print(user2.messages)
+    
+          </pre>
+        
+    </div>
+</div>
+
+<p><strong> Solution:</strong></p>
+
+</div>
+
+</h2>
+<div class="container">
+    <h2>5.	Debug to make visualisation</h2>
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>import matplotlib.pyplot as plt
+
+        class DataVisualizer:
+            @staticmethod
+            def plot_data(x, y):
+                plt.plot(x, y)
+                plt.xlabel('X-axis')
+                plt.ylabel('Y-axis')
+                plt.title('Data Visualization')
+                plt.show()
+        DataVisualizer.plot_data([0.0,1, 2, 3, 4.0, (5,6,7)], [(None),2, 4, 6, 8, 10])
+        
+    
+    </pre>
+    
+</div>
+</div>
+
+
+</div>
+
+
+
+<div class="question-status">
+    <div class="question-status-row">
+        <div class="question-status-item" id="question-1-status" onclick="toggleQuestionStatus(this)">Q1</div>
+        <div class="question-status-item" id="question-2-status" onclick="toggleQuestionStatus(this)">Q2</div>
+        <div class="question-status-item" id="question-3-status" onclick="toggleQuestionStatus(this)">Q3</div>
+    </div>
+    <div class="question-status-row" style="margin-top: 10px;">
+        <div class="question-status-item" id="question-4-status" onclick="toggleQuestionStatus(this)">Q4</div>
+        <div class="question-status-item" id="question-5-status" onclick="toggleQuestionStatus(this)">Q5</div>
+    </div>
+    <div class="question-status-row">
+        <div id="timer" class="timer-button">00:00</div>
+    </div>
+    <!-- Add more question status items as needed -->
+</div>
+</h2>
+
+
+
+<script>
+    
+    function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        // Calculate total seconds for the timer (20 minutes)
+        var totalTimeInSeconds = 20 * 60;
+
+        // Get the timer display element
+        var timerDisplay = document.getElementById('timer');
+
+        // Start the timer
+        startTimer(totalTimeInSeconds, timerDisplay);
+
+        // Function to fix the timer position after scrolling
+        function fixTimerPosition() {
+            var timerContainer = document.querySelector('.container');
+            var timerDisplay = document.getElementById('timer');
+            var timerContainerRect = timerContainer.getBoundingClientRect();
+
+            if (window.scrollY > timerContainerRect.top) {
+                // Timer container is scrolled past, fix the timer position
+                timerDisplay.style.position = 'fixed';
+                timerDisplay.style.top = '0';
+                timerDisplay.style.left = '0';
+                timerDisplay.style.width = '100%';
+                timerDisplay.style.zIndex = '999';
+            } else {
+                // Timer container is still visible, reset the timer position
+                timerDisplay.style.position = 'static';
+            }
+        }
+
+        // Call the function to fix the timer position initially
+        fixTimerPosition();
+
+        // Event listener for scroll event to fix the timer position
+        window.addEventListener('load', function() {
+        var questionStatuses = localStorage.getItem('questionStatuses');
+        if (questionStatuses !== null) {
+            var statuses = JSON.parse(questionStatuses);
+            Object.keys(statuses).forEach(function(questionNumber) {
+                var status = statuses[questionNumber];
+                var statusElement = document.getElementById('question-' + questionNumber + '-status');
+                if (status === 'answered') {
+                    statusElement.classList.remove('not-answered');
+                    statusElement.classList.add('answered');
+                }
+            });
+        } else {
+            // Initialize question statuses if not already set
+            var textAreas = document.querySelectorAll('.textArea');
+            textAreas.forEach(function(textArea) {
+                var questionNumber = parseInt(textArea.parentElement.querySelector('h2').innerText.match(/\d+/)[0]);
+                var statusElement = document.getElementById('question-' + questionNumber + '-status');
+                statusElement.classList.add('not-answered'); // Initialize all questions as not-answered
+            });
+        }
+    });
+
+    function updateQuestionStatus(textArea, questionNumber) {
+        var statusElement = document.getElementById('question-' + questionNumber + '-status');
+        if (textArea.value.trim() !== '') {
+            statusElement.classList.remove('not-answered');
+            statusElement.classList.add('answered');
+        } else {
+            statusElement.classList.remove('answered');
+            statusElement.classList.add('not-answered');
+        }
+
+        // Save question status to localStorage
+        var questionStatuses = JSON.parse(localStorage.getItem('questionStatuses') || '{}');
+        questionStatuses[questionNumber] = textArea.value.trim() !== '' ? 'answered' : 'not-answered';
+        localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    }
+    if (!localStorage.getItem('preventReload')) {
+            // If not set, add event listener for beforeunload event
+            window.addEventListener('beforeunload', function(event) {
+                // Cancel the unload operation
+                event.preventDefault();
+                // Set a message to prompt the user (optional)
+                event.returnValue = 'Are you sure you want to leave?'; // Some browsers require a return value
+            });
+
+            // Set the flag in localStorage to indicate that the event listener is active
+            localStorage.setItem('preventReload', 'true');
+        }
+        window.addEventListener('beforeunload', function(event) {
+            // Cancel the unload operation
+            event.preventDefault();
+            // Set a message to prompt the user
+            event.returnValue = 'Are you sure you want to leave?'; // Some browsers require a return value
+        });
+  
+</script>
+</body>
+</html>

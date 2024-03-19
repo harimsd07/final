@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <title>Debugging Contest</title>
+
+    <style>
+        /* Resetting default margin and padding */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main container styling */
+ 
+        .container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #DCF2F1; /* White background with opacity */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease; 
+        }
+
+        /* Title styling */
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            padding-top:30px;
+            padding-bottom: 30px;
+            background-color:#FFFDCB;
+            width: 100%;
+            animation: fadeIn 1s ease; /* Fade in animation */
+        }
+
+        /* Question styling */
+        h2 {
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+            animation: fadeInLeft 1s ease; /* Fade in animation */
+        }
+
+        /* Paragraph styling */
+        .question p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        /* Code block styling */
+        .code {
+            background-color: #f9f9f9;
+            overflow-x: auto;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 15px;
+            width: 78%;
+            border:2px solid #000;
+        }
+
+        .code pre {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .timer-button {
+            font-size: 26px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .timer-button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* Textarea styling */
+        .textArea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid black;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            width: 82.5%;
+            resize: none; /* Disable textarea resizing */
+        }
+
+        /* Textarea focus styling */
+        .textArea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .question-status {
+            margin-top: 20px;
+            position: fixed;
+            top: 35%;
+            right: 0px;
+            transform: translateY(-50%);
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 15px;
+            background-color: aliceblue;
+        }
+
+        .question-status-item {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 25px;
+        }
+
+        .answered {
+            background-color: green;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DEBUGGING CONTEST QUESTIONS</h1><br>
+        <h2>1.	Correct the code to get the majority element in the list</h2></br>
+        
+        <div class="question">
+            <p>DEBUG the following Python code:</p>
+            <div class="code">
+                <pre>
+                    Output: [1,2,3,4,5,[….]]
+                    <br>
+                    a=[1,2,3,4,5]
+                    a=a.append(a)
+                    print(a)
+
+                </pre>
+                
+            </div>
+        </div>
+        <div class="question">
+            <p>DEBUG the following C code:</p>
+            <div class="code">
+                <pre>
+                    Output: [1,2,3,4,5,[….]]
+                    <br>
+                    #include <stdio.h>
+                    #include <stdlib.h>
+                    
+                    int main() {
+                        int a[] = {1, 2, 3, 4, 5};
+                        int *temp = (int *)malloc(6 * sizeof(int *));
+                        if (temp == NULL) {
+                            printf("Memory allocation failed!\n");
+                            return 1;
+                        }
+                    
+                        for (int i = 0; i < 5; i++) {
+                            temp[i] = a[i];
+                        }
+                        temp[5] = (int)&temp[6]; 
+                    
+                        printf("[");
+                        for (int i = 0; i < 6; i++) {
+                            if (i != 0) printf(", ");
+                            printf("%p", (void *)temp[i]);
+                        }
+                        printf("]\n");
+                    
+                        free(temp);
+                        return 0;
+                    }
+                    
+                    </pre>
+                
+            </div>
+        </div>
+
+        <div class="question">
+            <p>DEBUG the following Java code:</p>
+            <div class="code">
+                <pre>                  
+                    Output: [1,2,3,4,5,[….]]
+                    <br>                    
+                    public class Main {
+                    public static void main(String[] args) {
+                        int[] a = {1, 2, 3, 4, 5};
+                        Object[] temp = new Object[6];
+                
+                        for (int i = 0; i < 5; i++) {
+                            temp[i] = a[i];
+                        }
+                        temp[5] = temp[6]; 
+                
+                        System.out.print("[");
+                        for (int i = 0; i < 6; i++) {
+                            if (i != 0) System.out.print(", ");
+                            System.out.print(temp[i]);
+                        }
+                        System.out.println("]");
+                    }
+                }
+                
+                    </pre>
+                
+            </div>
+        </div>
+        <p><strong> Solution:</strong></p>
+        <!-- Repeat the structure for other questions -->
+        <div>
+            <textarea id="textarea1" class="textArea" rows="4" cols="160"  oninput="updateQuestionStatus(this, 1)"></textarea> 
+        </div>
+    </div>
+
+     <div class="container">
+        <h2>2.	Write a correct code by debugging the errors in the following code to get lcm of the number</h2>
+        
+        <div class="question">
+            <p>DEBUG the following Python code:</p>
+            <div class="code">
+                <pre>Output: [1,2,3,4]
+                    <br>
+                    a=[1,2,3,4]
+                    b=a
+                    b[2]="hello world"
+                    print(a)
+                      
+                </pre>
+                
+            </div>
+        </div>
+        <div class="question">
+            <p>DEBUG the following C code:</p>
+            <div class="code">
+                <pre>Output: [1,2,3,4]
+                    <br>
+                     #include <stdio.h>
+                    #include <stdlib.h>
+                    #include <string.h>
+                    
+                    int main() {
+                        int a[] = {1, 2, 3, 4};
+                        int *b = malloc(4 * sizeof(int));
+                        if (b == NULL) {
+                            printf("Memory allocation failed!\n");
+                            return 1;
+                        }
+                    
+                        
+                        memcpy(b, a, 4 * sizeof(int));
+                    
+                        
+                        b[2] = (int)strdup("hello world"); 
+                        
+                        printf("Output: [");
+                        for (int i = 0; i < 4; i++) {
+                            if (i != 0) printf(",");
+                            printf("%d", a[i]);
+                        }
+                        printf("]\n");
+                    
+                        
+                        free(b[2]);
+                        free(b);
+                        return 0;
+                    }
+                    
+                    
+                
+                    </pre>
+                
+            </div>
+        </div>
+
+        <div class="question">
+            <p>DEBUG the following Java code:</p>
+            <div class="code">
+                <pre>
+                    Output: [1,2,3,4]
+                    <br>    
+                import java.util.Arrays;
+
+                public class Main {
+                    public static void main(String[] args) {
+                        int[] a = {1, 2, 3, 4};
+                        int[] b = Arrays.copyOf(a, a.length);
+
+                        
+                        b[2] = "hello world".hashCode(); 
+                        
+                        System.out.print("Output: [");
+                        for (int i = 0; i < 4; i++) {
+                            if (i != 0) System.out.print(",");
+                            System.out.print(a[i]);
+                        }
+                        System.out.println("]");
+                    }
+                }
+         
+                    </pre>
+                
+            </div>
+        </div>
+        <p><strong> Solution:</strong></p>
+
+        <!-- Repeat the structure for other questions -->
+        <div>
+            <textarea id="textarea2" class="textArea" rows="4" cols="160"  oninput="updateQuestionStatus(this, 2)"></textarea> 
+        </div>
+    </div>
+     
+     <div class="container">
+            <h2>3.Debug the code to perform bubble sort.</h2>
+    
+    <div class="question">
+        <p>DEBUG the following Python code:</p>
+        <div class="code">
+            <pre>Output: [[4],[4],[4],[4]]
+                <br>
+                a=[]
+                a=a*4
+                a[0].append(4)
+                print(a)
+                
+            
+            </pre>
+            
+        </div>
+    </div>
+    <div class="question">
+        <p>DEBUG the following C code:</p>
+        <div class="code">
+            <pre>
+                Output: [[4],[4],[4],[4]]
+                <br>
+                    #include <stdio.h>
+                    #include <stdlib.h>
+                    
+                    int main() {
+                        int **a = NULL; 
+                        a = (int **)malloc(4 * sizeof(int *)); 
+                    
+                        if (a == NULL) {
+                            printf("Memory allocation failed!\n");
+                            return 1;
+                        }
+                    
+                        
+                        for (int i = 0; i < 4; i++) {
+                            a[i] = (int *)malloc(sizeof(int));
+                            if (a[i] == NULL) {
+                                printf("Memory allocation failed!\n");
+                                return 1;
+                            }
+                            *a[i] = 4;
+                        }
+                    
+                       
+                        printf("Output: [");
+                        for (int i = 0; i < 4; i++) {
+                            if (i != 0) printf(",");
+                            printf("[%d]", *a[i]);
+                        }
+                        printf("]\n");
+                    
+                        for (int i = 0; i < 4; i++) {
+                            free(a[i]);
+                        }
+                        free(a);
+                    
+                        return 0;
+                    }
+                    
+                </pre>
+            
+        </div>
+    </div>
+
+    <div class="question">
+        <p>DEBUG the following Java code:</p>
+        <div class="code">
+            <pre>  
+                Output: [[4],[4],[4],[4]]
+                <br>
+                import java.util.ArrayList;
+
+                public class Main {
+                    public static void main(String[] args) {
+                        ArrayList<ArrayList<Integer>> a = new ArrayList<>(); 
+                
+                        
+                        for (int i = 0; i < 4; i++) {
+                            ArrayList<Integer> inner = new ArrayList<>();
+                            inner.add(4);
+                            a.add(inner);
+                        }
+                
+                        System.out.print("Output: [");
+                        for (int i = 0; i < 4; i++) {
+                            if (i != 0) System.out.print(",");
+                            System.out.print(a.get(i));
+                        }
+                        System.out.println("]");
+                    }
+                }
+                
+        </pre>
+            
+        </div>
+    </div>
+    <p><strong> Solution:</strong></p>
+    <div>
+        <textarea id="textarea3" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 3)"></textarea> 
+    </div>
+</div>
+
+<div class="container">
+        <h2>4.	Debug the code to get the logest common prefix in the elements of the list.</h2>
+
+<div class="question">
+    <p>DEBUG the following Python code:</p>
+    <div class="code">
+        <pre>def longest_common_prefix(strings):
+            if not strings:
+                return ""
+            prefix = strings[0]
+            for string in strings[1:]:
+                while string.find(prefix)!=0:
+                    if not prefix:
+                        return ""
+            return prefix
+        print(longest_common_prefix(["flower","flow","flight"]))
+          </pre>
+        
+    </div>
+</div>
+<div class="question">
+    <p>DEBUG the following C code:</p>
+    <div class="code">
+        <pre>#include <<stdio.h>stdio.h>
+            #include <string.h>
+            
+            char* longestCommonPrefix(char** strings, int size) {
+                if (size == 0)
+                    return "";
+            
+                char* prefix = strings[0];
+                for (int i = 1; i < size; i++) {
+                    while (strstr(strings[i], prefix) != strings[i]) {
+                        if (!*prefix)
+                            return "";
+                        prefix[strlen(prefix) - 1] = '\0';
+                    }
+                }
+                return prefix;
+            }
+            
+            int main() {
+                char* strings[] = {"flower", "flow", "flight"};
+                int size = sizeof(strings) / sizeof(strings[0]);
+                printf("%s\n", longestCommonPrefix(strings, size));
+                return 0;
+            }
+            
+            </pre>
+        
+    </div>
+</div>
+
+<div class="question">
+    <p>DEBUG the following Java code:</p>
+    <div class="code">
+        <pre>  public class Main {
+            public static String longestCommonPrefix(String[] strings) {
+                if (strings.length == 0)
+                    return "";
+        
+                String prefix = strings[0];
+                for (int i = 1; i < strings.length; i++) {
+                    while (!strings[i].startsWith(prefix)) {
+                        if (prefix.isEmpty())
+                            return "";
+                        prefix = prefix.substring(0, prefix.length() - 1);
+                    }
+                }
+                return prefix;
+            }
+        
+            public static void main(String[] args) {
+                String[] strings = {"flower", "flow", "flight"};
+                System.out.println(longestCommonPrefix(strings));
+            }
+        }
+        
+    </pre>
+        
+    </div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+    <textarea id="textarea4" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 4)"></textarea> 
+</div>
+</div>
+
+</h2>
+<div class="container">
+    <h2>5.Change the code to merge two sorted list into single sorted list.</h2>
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>
+        a=[1,2,3,4,5]
+        a+=6
+        Correct code:
+        a=[1,2,3,4,5]
+        a+=[6]
+        
+    
+    </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        #include <stdio.h>
+            #include <stdlib.h>
+            
+            int main() {
+                int a[] = {1, 2, 3, 4, 5};
+                int size = sizeof(a) / sizeof(a[0]);
+                int value = 6;
+            
+                size++;
+                int *temp = realloc(a, size * sizeof(int));
+                if (temp == NULL) {
+                    printf("Memory reallocation failed!\n");
+                    return 1;
+                }
+                a = temp;
+            
+                a[size - 1] = value;
+            
+                printf("Output: [");
+                for (int i = 0; i < size; i++) {
+                    if (i != 0) printf(",");
+                    printf("%d", a[i]);
+                }
+                printf("]\n");
+            
+                return 0;
+            }
+            
+         </pre>
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre>
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        
+        public class Main {
+            public static void main(String[] args) {
+                ArrayList<Integer> a = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+                int value = 6;
+        
+                a.add(value);
+         
+                System.out.print("Output: [");
+                for (int i = 0; i < a.size(); i++) {
+                    if (i != 0) System.out.print(",");
+                    System.out.print(a.get(i));
+                }
+                System.out.println("]");
+            }
+        }
+        
+        
+
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea5" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 5)"></textarea> 
+</div>
+</div>
+
+
+<div class="container">
+    <h2>6.Debug the code to rotate the list by k times given.</h2>
+
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>for x in range(6):
+        print(x,”\n”)
+        
+    
+      </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        #include <stdio.h>
+
+            int main() {
+                for (int x = 0; x < 6; ) {
+                    printf("%d\n", x);
+                }
+                return 0;
+            }
+            
+            
+        </pre>
+    
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre> 
+        public class Main {
+            public static void main(String[] args) {
+                for (int x = 0; x < 6; x++) {
+                    System.out.println(x);
+                }
+            }
+        }
+        
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea6" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 6)"></textarea> 
+</div>
+</div>
+</h2>
+<div class="container">
+    <h2>7.debug the code to find the maximum consecutive sum in the given list.</h2>
+
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>
+        a=3
+        for I in range(2,a-1):
+            if I %a!=0:
+                print(“prime number”)
+        
+      </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        #include <stdio.h>
+
+            int main() {
+                int a = 3;
+                for (int i = 2; i < a - 1; i++) {
+                    if (i % a != 0) {
+                        printf("prime number\n");
+                    }
+                }
+                return 0;
+            }
+            
+        </pre>
+    
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre> 
+        public class Main {
+            public static void main(String[] args) {
+                int a = 3;
+                for (int i = 2; i < a - 1; i++) {
+                    if (i % a != 0) {
+                        System.out.println("prime number");
+                    }
+                }
+            }
+        }        
+        
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea7" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 7)"></textarea> 
+</div>
+</div>
+
+</h2>
+<div class="container">
+    <h2>8.correct the code to find the first non repeating character in the string given</h2>
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>
+        n = 5
+for i in range(1,n):
+     for j in range(i):
+        print('* ', end="")
+     print('')
+
+    
+      </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        #include <stdio.h>
+
+            void main() {
+                int n = 5;
+                for (int i = 1; i < n; i++) {
+                    for (int j = 0; j < i; j++) {
+                        printf("* ");
+                    }
+                    printf("\n");
+                }
+                return 1;
+            }
+               
+        </pre>
+    
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre> 
+        public class Main {
+            public statc void main(String[] args) {
+                int n = 5;
+                int i;
+                for ( i = 1; i < n; i++) {
+                    for ( j = 0; j < i; j++) {
+                        System.out.print("* ");
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        
+        
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea8" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 8)"></textarea> 
+</div>
+</div>
+
+</h2>
+<div class="container">
+    <h2>9.The missed line should be included to get the expected output string is a valid palindrome, considering only alphanumeric characters and ignoring cases.</h2>
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>
+        n = 5
+for i in range(1,n):
+     for j in range(1,i):
+        print('* ', end="")
+     print('')
+
+
+      </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        #include <stdio.h>
+
+            int main() {
+                int n = 5;
+                for (int i = 1; i < n; i++) {
+                    for (int j = 1; j < i; j++) { 
+                        printf("* ");
+                    }
+                    printf("\n");
+                }
+                return 0;
+            }           
+        </pre>
+    
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre> 
+        public class Main {
+            public static void main(String[] args) {
+                int n = 5;
+                for (int i = 1; i < n; i++) {
+                    for (int j = 0; j < i; j++) {
+                        System.out.print("* ");
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea9" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 9)"></textarea> 
+</div>
+</div>
+
+</h2> 
+<div class="container">
+    <h2>10.debug the code to count the number of inversions in an array. Inversions are pairs of elements (i, j) such that i < j and array[i] > array[j].</h2>
+<div class="question">
+<p>DEBUG the following Python code:</p>
+<div class="code">
+    <pre>
+        Output:"di"
+        <br>
+        s = 'medium'
+        print(s[-4:4]\n)
+
+
+      </pre>
+    
+</div>
+</div>
+<div class="question">
+<p>DEBUG the following C code:</p>
+<div class="code">
+    <pre>
+        Output:"di"
+        <br>
+        #include <stdio.h>
+            #include <string.h>
+            
+            int main() {
+                char s[] = "medium";
+                char sub[10]; // Assuming a maximum length
+                strncpy(sub, s + 1, 3);
+                sub[3] = '\0'; // Null-terminate the string
+                printf("%s\n", sub);
+                return 0;
+            }
+                
+        </pre>
+    
+</div>
+</div>
+
+<div class="question">
+<p>DEBUG the following Java code:</p>
+<div class="code">
+    <pre>
+        Output:"di"
+        <br> 
+        public class Main {
+            public static void main(String[] args) {
+                String s = "medium";
+                String sub = s.substring(1, 4);
+                System.out.println(sub);
+            }
+        }
+        
+</pre>
+    
+</div>
+</div>
+<p><strong> Solution:</strong></p>
+<div>
+<textarea id="textarea10" class="textArea" rows="4" cols="150" oninput="updateQuestionStatus(this, 10)"></textarea> 
+</div>
+</div>
+<div class="question-status">
+    <div class="question-status-row">
+        <div class="question-status-item" id="question-1-status" onclick="toggleQuestionStatus(this)">Q1</div>
+        <div class="question-status-item" id="question-2-status" onclick="toggleQuestionStatus(this)">Q2</div>
+        <div class="question-status-item" id="question-3-status" onclick="toggleQuestionStatus(this)">Q3</div>
+    </div>
+    <div class="question-status-row" style="margin-top: 10px;">
+        <div class="question-status-item" id="question-4-status" onclick="toggleQuestionStatus(this)">Q4</div>
+        <div class="question-status-item" id="question-5-status" onclick="toggleQuestionStatus(this)">Q5</div>
+        <div class="question-status-item" id="question-6-status" onclick="toggleQuestionStatus(this)">Q6</div>
+    </div>
+    <div class="question-status-row" style="margin-top: 10px;">
+        <div class="question-status-item" id="question-7-status" onclick="toggleQuestionStatus(this)">Q7</div>
+        <div class="question-status-item" id="question-8-status" onclick="toggleQuestionStatus(this)">Q8</div>
+        <div class="question-status-item" id="question-9-status" onclick="toggleQuestionStatus(this)">Q9</div>
+    </div>
+    <div style="margin-top: 10px;" class="question-status-item" id="question-10-status" onclick="toggleQuestionStatus(this)">Q10</div>
+    <div class="question-status-row">
+        <div id="timer" class="timer-button">00:00</div>
+    </div>
+    <!-- Add more question status items as needed -->
+</div>
+</h2>
+
+
+
+<script>
+    // Load textarea content from localStorage on page load
+    window.addEventListener('load', function() {
+        var textAreas = document.querySelectorAll('.textArea');
+        textAreas.forEach(function(textArea) {
+            var id = textArea.id;
+            var savedContent = localStorage.getItem(id);
+            if (savedContent !== null) {
+                textArea.value = savedContent;
+            }
+            // Save textarea content to localStorage on change
+            textArea.addEventListener('input', function() {
+                localStorage.setItem(id, this.value);
+            });
+        });
+    });
+    function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        // Calculate total seconds for the timer (20 minutes)
+        var totalTimeInSeconds = 20 * 60;
+
+        // Get the timer display element
+        var timerDisplay = document.getElementById('timer');
+
+        // Start the timer
+        startTimer(totalTimeInSeconds, timerDisplay);
+
+        // Function to fix the timer position after scrolling
+        function fixTimerPosition() {
+            var timerContainer = document.querySelector('.container');
+            var timerDisplay = document.getElementById('timer');
+            var timerContainerRect = timerContainer.getBoundingClientRect();
+
+            if (window.scrollY > timerContainerRect.top) {
+                // Timer container is scrolled past, fix the timer position
+                timerDisplay.style.position = 'fixed';
+                timerDisplay.style.top = '0';
+                timerDisplay.style.left = '0';
+                timerDisplay.style.width = '100%';
+                timerDisplay.style.zIndex = '999';
+            } else {
+                // Timer container is still visible, reset the timer position
+                timerDisplay.style.position = 'static';
+            }
+        }
+
+        // Call the function to fix the timer position initially
+        fixTimerPosition();
+
+        // Event listener for scroll event to fix the timer position
+        window.addEventListener('load', function() {
+        var questionStatuses = localStorage.getItem('questionStatuses');
+        if (questionStatuses !== null) {
+            var statuses = JSON.parse(questionStatuses);
+            Object.keys(statuses).forEach(function(questionNumber) {
+                var status = statuses[questionNumber];
+                var statusElement = document.getElementById('question-' + questionNumber + '-status');
+                if (status === 'answered') {
+                    statusElement.classList.remove('not-answered');
+                    statusElement.classList.add('answered');
+                }
+            });
+        } else {
+            // Initialize question statuses if not already set
+            var textAreas = document.querySelectorAll('.textArea');
+            textAreas.forEach(function(textArea) {
+                var questionNumber = parseInt(textArea.parentElement.querySelector('h2').innerText.match(/\d+/)[0]);
+                var statusElement = document.getElementById('question-' + questionNumber + '-status');
+                statusElement.classList.add('not-answered'); // Initialize all questions as not-answered
+            });
+        }
+    });
+
+    function updateQuestionStatus(textArea, questionNumber) {
+        var statusElement = document.getElementById('question-' + questionNumber + '-status');
+        if (textArea.value.trim() !== '') {
+            statusElement.classList.remove('not-answered');
+            statusElement.classList.add('answered');
+        } else {
+            statusElement.classList.remove('answered');
+            statusElement.classList.add('not-answered');
+        }
+
+        // Save question status to localStorage
+        var questionStatuses = JSON.parse(localStorage.getItem('questionStatuses') || '{}');
+        questionStatuses[questionNumber] = textArea.value.trim() !== '' ? 'answered' : 'not-answered';
+        localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    }
+
+  
+</script>
+</body>
+</html>
